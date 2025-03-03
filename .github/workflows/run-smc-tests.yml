@@ -2,9 +2,9 @@ name: Smart contracts test
 
 on:
   pull_request:
-  push:
-    branches:
-      - main
+  # push:
+  #   branches:
+  #     - main
 
 jobs:
   run-contract-tests:

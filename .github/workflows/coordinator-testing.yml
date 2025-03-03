@@ -1,0 +1,13 @@
+name: coordinator-testing
+
+on:
+  workflow_call:
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    name: Coordinator tests
+    steps:
+      - name: HELLO
+        run: |
+          echo HELLO

@@ -1,0 +1,16 @@
+name: Smart contracts test
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-contract-tests:
+    runs-on: ubuntu-latest
+    name: Run smart contracts tests
+    steps:
+      - name: HELLO
+        run: |
+          echo HELLO

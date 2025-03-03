@@ -2,7 +2,7 @@ name: Codecov coverage report upload for PRs from external forks
 
 on:
   workflow_run:
-    workflows: [Smart contracts test, coordinator-testing]
+    workflows: [coordinator-testing]
     types:
       - completed
 

@@ -11,4 +11,3 @@ jobs:
       - name: HELLO
         run: |
           echo HELLO
-          sleep 30

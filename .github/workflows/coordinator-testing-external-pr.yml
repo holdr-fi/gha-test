@@ -2,7 +2,7 @@ name: Codecov coverage report upload (Coordinator tests) for PRs from external f
 
 on:
   workflow_run:
-    workflows: [coordinator-testing]
+    workflows: [main]
     types:
       - completed
 

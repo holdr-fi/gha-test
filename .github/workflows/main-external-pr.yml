@@ -26,6 +26,7 @@ jobs:
               - '.github/**'
 
   upload-codecov-report:
+    needs: [ filter-commit-changes ]
     if: ${{ needs.filter-commit-changes.outputs.coordinator == 'true' }}
     runs-on: ubuntu-latest
     name: upload-codecov-report

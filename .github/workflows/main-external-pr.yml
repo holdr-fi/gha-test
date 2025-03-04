@@ -23,7 +23,7 @@ jobs:
           list-files: "json"
           filters: |
             coordinator:
-              - 'a.js'
+              - '.github/**'
 
   upload-codecov-report:
     if: ${{ needs.filter-commit-changes.outputs.coordinator == 'true' }}

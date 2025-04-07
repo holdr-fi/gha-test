@@ -15,3 +15,9 @@ jobs:
         run: |
           echo "hi - ${{ github.event.pull_request.head.repo.full_name }}"
           echo "hi - ${{ github.event.pull_request.head.repo.fork }}"
+          echo "hi - ${{ github.event.pull_request.head.repo.fork }} == true"
+          if [ "${{ github.event.pull_request.head.repo.fork }}" == false ]; then
+            echo "falsy"
+          else
+            echo "not falsy"
+          fi

@@ -31,7 +31,7 @@ jobs:
             smc:
               - '.github/**'
 
-  upload-codecov-coordinator:
+  upload-codecov-coordinatoar:
     needs: [ filter-commit-changes ]
     if: ${{ needs.filter-commit-changes.outputs.coordinator == 'true' }}
     runs-on: ubuntu-latest

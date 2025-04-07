@@ -24,9 +24,10 @@ jobs:
       - if: github.event.pull_request.head.repo.full_name != 'kyzooghost/gha-test'
         run: |
           echo "github.event.pull_request.head.repo.full_name != 'kyzooghost/gha-test'"
-      - if: github.event.pull_request.head.repo.full_name == "kyzooghost/gha-test"
+      - if: ${{ github.event.pull_request.head.repo.full_name }} == 'kyzooghost/gha-test'
         run: |
-          echo "2github.event.pull_request.head.repo.full_name == kyzooghost/gha-test"
-      - if: github.event.pull_request.head.repo.full_name != "kyzooghost/gha-test"
+          echo "github.event.pull_request.head.repo.full_name == 'kyzooghost/gha-test'"
+      - if: ${{ github.event.pull_request.head.repo.full_name }} != 'kyzooghost/gha-test'
         run: |
-          echo "2github.event.pull_request.head.repo.full_name != kyzooghost/gha-test"
+          echo "github.event.pull_request.head.repo.full_name != 'kyzooghost/gha-test'"
+=

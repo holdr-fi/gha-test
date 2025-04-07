@@ -10,4 +10,8 @@ jobs:
     steps:
       - name: HELLO
         run: |
-          echo HELLO
+          echo HELLOYELLO
+      - name: Logs
+        run: |
+          echo "hi - ${{ github.event.pull_request.head.repo.full_name }}"
+          echo "hi - ${{ github.event.pull_request.head.repo.fork }}"

@@ -11,3 +11,6 @@ jobs:
       - name: HELLO
         run: |
           echo HELLOYELLO
+      - name: Print log
+        run: |
+          echo "hi - ${{ github.event.pull_request.head.repo.fork }}"

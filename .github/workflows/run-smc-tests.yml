@@ -10,4 +10,4 @@ jobs:
     steps:
       - name: HELLO
         run: |
-          echo HELLO
+          echo HELLOYELLO

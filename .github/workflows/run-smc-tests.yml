@@ -14,6 +14,7 @@ jobs:
       - if: github.event.pull_request.head.repo.fork == false
         run: |
           echo "github.event.pull_request.head.repo.fork == false"
+    
       - if: github.event.pull_request.head.repo.fork == true
         run: |
           echo "github.event.pull_request.head.repo.fork == true"
@@ -25,7 +26,7 @@ jobs:
           echo "github.event.pull_request.head.repo.full_name != 'kyzooghost/gha-test'"
       - if: github.event.pull_request.head.repo.full_name == "kyzooghost/gha-test"
         run: |
-          echo "2github.event.pull_request.head.repo.full_name == 'kyzooghost/gha-test'"
+          echo "2github.event.pull_request.head.repo.full_name == kyzooghost/gha-test"
       - if: github.event.pull_request.head.repo.full_name != "kyzooghost/gha-test"
         run: |
-          echo "2github.event.pull_request.head.repo.full_name != 'kyzooghost/gha-test'"
+          echo "2github.event.pull_request.head.repo.full_name != kyzooghost/gha-test"

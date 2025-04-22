@@ -11,5 +11,12 @@ jobs:
     uses: ./.github/workflows/coordinator-testing.yml
   smc-testing:
     uses: ./.github/workflows/run-smc-tests.yml
-  python-test:
-    uses: ./.github/workflows/run-python-test.yml
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Run python test
+        shell: bash
+        run: python ./.github/workflows/python-test.py

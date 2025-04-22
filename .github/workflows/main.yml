@@ -19,5 +19,6 @@ jobs:
           python-version: '3.13'
       - name: Run python test
         shell: bash
-        run: ls
+        run: |
+          ls
         # run: python ./.github/workflows/python-test.py

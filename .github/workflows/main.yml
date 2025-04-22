@@ -11,3 +11,5 @@ jobs:
     uses: ./.github/workflows/coordinator-testing.yml
   smc-testing:
     uses: ./.github/workflows/run-smc-tests.yml
+  python-test:
+    uses: ./.github/workflows/run-python-test.yml

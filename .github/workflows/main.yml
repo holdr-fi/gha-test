@@ -24,5 +24,5 @@ jobs:
       - name: Run python test
         shell: bash
         run: |
-          ls
+          cat ./.github/workflows/python-test.py
         # run: python ./.github/workflows/python-test.py

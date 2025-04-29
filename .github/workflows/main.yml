@@ -25,5 +25,5 @@ jobs:
         shell: bash
         run: |
           COMMIT_TAG=$(git rev-parse --short "$GITHUB_SHA")
-          echo COMMIT_TAG
+          echo $COMMIT_TAG
           # python ./.github/workflows/python-test.py

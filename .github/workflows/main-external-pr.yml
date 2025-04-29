@@ -21,7 +21,8 @@ jobs:
         run: |
           COMMIT_TAG=$(git rev-parse --short "$GITHUB_SHA")
           echo $COMMIT_TAG
-          echo "Workflow Run Commit: ${{ github.event.workflow_run.head_sha }}"
+          echo "Workflow Run Commit: ${{ github.event.workflow_run.head_commit }}"
+          echo "Workflow Run SHA: ${{ github.event.workflow_run.head_sha }}"
       - name: Filter commit changes
         uses: dorny/paths-filter@v3
         id: filter

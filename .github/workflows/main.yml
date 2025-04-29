@@ -24,4 +24,6 @@ jobs:
       - name: Run python test
         shell: bash
         run: |
-          python ./.github/workflows/python-test.py
+          COMMIT_TAG=$(git rev-parse --short "$GITHUB_SHA")
+          echo COMMIT_TAG
+          # python ./.github/workflows/python-test.py

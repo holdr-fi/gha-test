@@ -16,6 +16,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Get commit tag
+        shell: bash
+        run: |
+          COMMIT_TAG=$(git rev-parse --short "$GITHUB_SHA")
+          echo COMMIT_TAG
       - name: Filter commit changes
         uses: dorny/paths-filter@v3
         id: filter

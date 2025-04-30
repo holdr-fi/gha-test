@@ -26,7 +26,7 @@ jobs:
       - name: Run python test
         shell: bash
         run: |
-        
+          echo "github.event_name: ${{ github.event_name }}"
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
             echo "COMMIT_TAG=$(git rev-parse --short ${{ github.event.pull_request.head.sha }})" >> $GITHUB_OUTPUT
           else

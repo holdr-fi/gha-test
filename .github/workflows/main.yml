@@ -31,6 +31,7 @@ jobs:
             echo 1
             echo "COMMIT_TAG=$(git rev-parse --short ${{ github.event.pull_request.head.sha }})" >> $GITHUB_OUTPUT
             echo ${{ env.COMMIT_TAG }}
+            echo "github.event.pull_request.head.sha : ${{ github.event.pull_request.head.sha }}"
           else
             echo 2
             echo "COMMIT_TAG=$(git rev-parse --short $GITHUB_SHA)" >> $GITHUB_OUTPUT

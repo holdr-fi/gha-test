@@ -25,16 +25,24 @@ jobs:
           python-version: '3.13'
       - name: Run python test
         shell: bash
+        id: step1
         run: |
           echo "github.event_name: ${{ github.event_name }}"
+
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
             echo 1
             echo "COMMIT_TAG=$(git rev-parse --short ${{ github.event.pull_request.head.sha }})" >> $GITHUB_OUTPUT
-            echo ${{ env.COMMIT_TAG }}
-            echo "github.event.pull_request.head.sha : ${{ github.event.pull_request.head.sha }}"
+            # echo ${{ env.COMMIT_TAG }}
+            # echo "github.event.pull_request.head.sha : ${{ github.event.pull_request.head.sha }}"
+            # echo "github.event.pull_request.head.sha : ${{ github.event.pull_request.head.sha }}"
           else
             echo 2
             echo "COMMIT_TAG=$(git rev-parse --short $GITHUB_SHA)" >> $GITHUB_OUTPUT
-            echo ${{ env.COMMIT_TAG }}
+            # echo ${{ env.COMMIT_TAG }}
           fi
+
           # python ./.github/workflows/python-test.py
+      - name: Show commit tag
+        id: step2
+        run: |
+          echo "COMMIT_TAG: ${{ steps.step1.outputs.COMMIT_TAG }}"

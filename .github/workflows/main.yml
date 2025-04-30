@@ -30,10 +30,10 @@ jobs:
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
             echo 1
             echo "COMMIT_TAG=$(git rev-parse --short ${{ github.event.pull_request.head.sha }})" >> $GITHUB_OUTPUT
+            echo $COMMIT_TAG
           else
             echo 2
             echo "COMMIT_TAG=$(git rev-parse --short $GITHUB_SHA)" >> $GITHUB_OUTPUT
+            echo $COMMIT_TAG
           fi
-          COMMIT_TAG=$(git rev-parse --short "$GITHUB_SHA")
-          echo $COMMIT_TAG
           # python ./.github/workflows/python-test.py

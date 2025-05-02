@@ -13,18 +13,18 @@ jobs:
     outputs:
       coordinator: ${{ steps.filter.outputs.coordinator }}
       smc: ${{ steps.filter.outputs.smc }}
+      commit-tag: ${{ steps.get-commit-tag.outputs.COMMIT_TAG }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Get commit tag
         shell: bash
-        id: step1
+        id: get-commit-tag
         run: |
           echo "COMMIT_TAG=$(git rev-parse --short ${{ github.event.workflow_run.head_sha }})" >> $GITHUB_OUTPUT
       - name: Show commit tag
-        id: step2
         run: |
-          echo "COMMIT_TAG: ${{ steps.step1.outputs.COMMIT_TAG }}"
+          echo "COMMIT_TAG: ${{ steps.get-commit-tag.outputs.COMMIT_TAG }}"
       - name: Filter commit changes
         uses: dorny/paths-filter@v3
         id: filter
@@ -45,7 +45,7 @@ jobs:
     steps:
       - name: HELLO
         run: |
-          echo HELLO
+          echo ${{ needs.filter-commit-changes.outputs.commit-tag }}
 
   upload-codecov-smc:
     needs: [ filter-commit-changes ]
@@ -55,4 +55,4 @@ jobs:
     steps:
       - name: HELLO
         run: |
-          echo HELLO
+          echo ${{ needs.filter-commit-changes.outputs.commit-tag }}

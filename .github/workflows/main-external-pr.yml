@@ -20,7 +20,7 @@ jobs:
         shell: bash
         id: step1
         run: |
-          echo "COMMIT_TAG=$(git rev-parse --short ${{ github.event.workflow_run.head_commit }})" >> $GITHUB_OUTPUT
+          echo "COMMIT_TAG=$(git rev-parse --short ${{ github.event.workflow_run.head_sha }})" >> $GITHUB_OUTPUT
       - name: Show commit tag
         id: step2
         run: |

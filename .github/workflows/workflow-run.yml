@@ -40,7 +40,7 @@ jobs:
           echo "COMMIT_TAG: ${{ steps.get-commit-tag.outputs.COMMIT_TAG }}"
       - name: Debugging log
         run: |
-          echo "1: ${{ github.event.workflow_run.pull_requests[0].base.sha }}"
+          echo "1: ${{ github.event.workflow_run.sha }}"
           echo "2: ${{ github.event.workflow_run.head_sha }}"
           echo "3: ${{ github.event.workflow_run.head_repository.full_name }}"
       - name: Filter commit changes
@@ -48,7 +48,7 @@ jobs:
         id: filter
         with:
           # Common ancestor between PR branch and main
-          base: ${{ github.event.workflow_run.pull_requests[0].base.sha }}
+          base: ${{ github.event.workflow_run.sha }}
           ref:  ${{ github.event.workflow_run.head_sha }}
           list-files: "json"
           filters: |

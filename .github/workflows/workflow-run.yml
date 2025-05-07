@@ -40,7 +40,7 @@ jobs:
           echo "COMMIT_TAG: ${{ steps.get-commit-tag.outputs.COMMIT_TAG }}"
       - name: Debugging log
         run: |
-          echo "1: $GITHUB_SHA"
+          echo $GITHUB_SHA
           echo "2: ${{ github.event.workflow_run.head_sha }}"
           echo "3: ${{ github.event.workflow_run.head_repository.full_name }}"
       - name: Filter commit changes

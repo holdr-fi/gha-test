@@ -18,6 +18,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          repository: ${{ github.event.workflow_run.head_repository.full_name }}
+          ref:        ${{ github.event.workflow_run.head_sha }}
+          fetch-depth: 0     # paths‑filter may need other commits
       - name: Get commit tag
         shell: bash
         id: get-commit-tag
@@ -35,7 +39,9 @@ jobs:
         uses: dorny/paths-filter@v3
         id: filter
         with:
-          base: ${{ github.ref }}
+          # Common ancestor between PR branch and main
+          base: ${{ github.event.workflow_run.pull_requests[0].base.sha }}
+          ref:  ${{ github.event.workflow_run.head_sha }}
           list-files: "json"
           filters: |
             coordinator:

@@ -10,20 +10,13 @@ permissions:
   contents: read # access to check out code and install dependencies
 
 jobs:
-  coordinator-testing:
-    uses: ./.github/workflows/coordinator-testing.yml
-  smc-testing:
-    uses: ./.github/workflows/run-smc-tests.yml
-  run-python-tests:
+  store-image-name-and-tags:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Important to get full commit history
-      # - uses: actions/setup-python@v5
-      #   with:
-      #     python-version: '3.13'
-      - name: Run python test
+      - name: Get COMMIT_TAG
         shell: bash
         id: step1
         run: |
@@ -38,3 +31,13 @@ jobs:
         id: step2
         run: |
           echo "COMMIT_TAG: ${{ steps.step1.outputs.COMMIT_TAG }}"
+
+      - name: Create empty a.txt
+        run: |
+          touch "a-${{ steps.step1.outputs.COMMIT_TAG }}.txt"
+
+      - name: Upload a.txt artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: a-${{ steps.step1.outputs.COMMIT_TAG }}.txt
+          path: a-${{ steps.step1.outputs.COMMIT_TAG }}.txt

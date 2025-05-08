@@ -7,8 +7,8 @@ on:
       - completed
 
 permissions:
+  actions: read
   contents: read # access to check out code and install dependencies
-  pull-requests: read # needed to get PR information
 
 jobs:
   get-commit-tag:
@@ -68,3 +68,4 @@ jobs:
           path: |
             ${{ github.workspace }}/a-${{ needs.get-commit-tag.outputs.commit-tag }}.txt
           run-id: ${{ github.event.workflow_run.id }}
+

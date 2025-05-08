@@ -49,9 +49,10 @@ jobs:
     name: upload-codecov-coordinator
     steps:
       - name: Download a.txt
+        continue-on-error: true
         uses: actions/download-artifact@v4
         with:
-          name: a-${{ needs.get-commit-tag.outputs.commit-tag }}.txt
+          name: build/a-${{ needs.get-commit-tag.outputs.commit-tag }}.txt
           path: |
             ${{ github.workspace }}/a-${{ needs.get-commit-tag.outputs.commit-tag }}.txt
           run-id: ${{ github.event.workflow_run.id }}
@@ -63,10 +64,11 @@ jobs:
     name: upload-codecov-smart-contracts
     steps:
       - name: Download a.txt
+        continue-on-error: true
         uses: actions/download-artifact@v4
         with:
           name: a-${{ needs.get-commit-tag.outputs.commit-tag }}.txt
           path: |
-            ${{ github.workspace }}/build/a-${{ needs.get-commit-tag.outputs.commit-tag }}.txt
+            ${{ github.workspace }}/a-${{ needs.get-commit-tag.outputs.commit-tag }}.txt
           run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}

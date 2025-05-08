@@ -8,7 +8,7 @@ on:
 
 permissions:
   actions: read
-  contents: read # access to check out code and install dependencies
+  contents: read
 
 jobs:
   get-commit-tag:
@@ -67,6 +67,6 @@ jobs:
         with:
           name: a-${{ needs.get-commit-tag.outputs.commit-tag }}.txt
           path: |
-            ${{ github.workspace }}/a-${{ needs.get-commit-tag.outputs.commit-tag }}.txt
+            ${{ github.workspace }}/build/a-${{ needs.get-commit-tag.outputs.commit-tag }}.txt
           run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}

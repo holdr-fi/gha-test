@@ -40,4 +40,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: a-${{ steps.step1.outputs.COMMIT_TAG }}.txt
-          path: a-${{ steps.step1.outputs.COMMIT_TAG }}.txt
+          path: ${{ github.workspace }}/a-${{ steps.step1.outputs.COMMIT_TAG }}.txt

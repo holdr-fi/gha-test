@@ -53,7 +53,7 @@ jobs:
         with:
           name: a-${{ needs.get-commit-tag.outputs.commit-tag }}.txt
           path: |
-            ${{ github.workspace }}/a.txt
+            ${{ github.workspace }}/a-${{ needs.get-commit-tag.outputs.commit-tag }}.txt
           run-id: ${{ github.event.workflow_run.id }}
 
   upload-codecov-smart-contracts:
@@ -66,5 +66,5 @@ jobs:
         with:
           name: a-${{ needs.get-commit-tag.outputs.commit-tag }}.txt
           path: |
-            ${{ github.workspace }}/a.txt
+            ${{ github.workspace }}/a-${{ needs.get-commit-tag.outputs.commit-tag }}.txt
           run-id: ${{ github.event.workflow_run.id }}

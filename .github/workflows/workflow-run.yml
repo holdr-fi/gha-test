@@ -55,7 +55,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Confirm a.txt download
-        if: $ {{ steps.coordinator-report-download.outcome == 'success' }}
+        if: ${{ steps.coordinator-report-download.outcome == 'success' }}
         shell: bash
         run: |
           cat ${{ github.workspace }}/a.txt
@@ -76,7 +76,7 @@ jobs:
           run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Confirm b.txt download
-        if: $ {{ steps.smc-report-download.outcome == 'success' }}
+        if: ${{ steps.smc-report-download.outcome == 'success' }}
         shell: bash
         run: |
           cat ${{ github.workspace }}/b.txt

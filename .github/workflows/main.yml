@@ -35,7 +35,7 @@ jobs:
       - name: Create empty .txt files
         run: |
           touch "a.txt"
-          touch "bc.txt"
+          touch "b.txt"
 
       - name: Upload a.txt artifact
         uses: actions/upload-artifact@v4
@@ -43,8 +43,8 @@ jobs:
           name: a-${{ steps.step1.outputs.COMMIT_TAG }}.txt
           path: ${{ github.workspace }}/a.txt
 
-      - name: Upload b.txt artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: b-${{ steps.step1.outputs.COMMIT_TAG }}.txt
-          path: ${{ github.workspace }}/bc.txt
+      # - name: Upload b.txt artifact
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: b-${{ steps.step1.outputs.COMMIT_TAG }}.txt
+      #     path: ${{ github.workspace }}/b.txt

@@ -35,7 +35,7 @@ jobs:
       - name: Create empty .txt files
         run: |
           touch "a.txt"
-          touch "b.txt"
+          touch "bc.txt"
 
       - name: Upload a.txt artifact
         uses: actions/upload-artifact@v4

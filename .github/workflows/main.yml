@@ -32,12 +32,19 @@ jobs:
         run: |
           echo "COMMIT_TAG: ${{ steps.step1.outputs.COMMIT_TAG }}"
 
-      - name: Create empty a.txt
+      - name: Create empty .txt files
         run: |
-          touch "a-${{ steps.step1.outputs.COMMIT_TAG }}.txt"
+          touch "a.txt"
+          touch "b.txt"
 
       - name: Upload a.txt artifact
         uses: actions/upload-artifact@v4
         with:
           name: a-${{ steps.step1.outputs.COMMIT_TAG }}.txt
-          path: ${{ github.workspace }}/a-${{ steps.step1.outputs.COMMIT_TAG }}.txt
+          path: ${{ github.workspace }}/a.txt
+
+      - name: Upload b.txt artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: b-${{ steps.step1.outputs.COMMIT_TAG }}.txt
+          path: ${{ github.workspace }}/b.txt

@@ -37,11 +37,6 @@ jobs:
       - name: Show commit tag
         run: |
           echo "COMMIT_TAG: ${{ steps.get-commit-tag.outputs.COMMIT_TAG }}"
-      - name: Debugging log
-        run: |
-          echo "1: ${{ github.event.workflow_run.id }}"
-          echo "2: ${{ github.event.workflow_run.head_sha }}"
-          echo "3: ${{ github.event.workflow_run.head_repository.full_name }}"
 
   upload-codecov-coordinator:
     needs: [ get-commit-tag ]
@@ -49,26 +44,37 @@ jobs:
     name: upload-codecov-coordinator
     steps:
       - name: Download a.txt
+        id: coordinator-report-download
         continue-on-error: true
         uses: actions/download-artifact@v4
         with:
           name: a-${{ needs.get-commit-tag.outputs.commit-tag }}.txt
           path: |
-            ${{ github.workspace }}/a-${{ needs.get-commit-tag.outputs.commit-tag }}.txt
+            ${{ github.workspace }}
           run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Confirm a.txt download
+        if: $ {{ steps.coordinator-report-download.outcome == 'success' }}
+        shell: |
+          cat ${{ github.workspace }}/a.txt
 
   upload-codecov-smart-contracts:
     needs: [ get-commit-tag ]
     runs-on: ubuntu-latest
     name: upload-codecov-smart-contracts
     steps:
-      - name: Download a.txt
+      - name: Download b.txt
+        id: smc-report-download
         continue-on-error: true
         uses: actions/download-artifact@v4
         with:
-          name: a-${{ needs.get-commit-tag.outputs.commit-tag }}.txt
+          name: b-${{ needs.get-commit-tag.outputs.commit-tag }}.txt
           path: |
-            ${{ github.workspace }}/a-${{ needs.get-commit-tag.outputs.commit-tag }}.txt
+            ${{ github.workspace }}
           run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Confirm b.txt download
+        if: $ {{ steps.smc-report-download.outcome == 'success' }}
+        shell: |
+          cat ${{ github.workspace }}/b.txt

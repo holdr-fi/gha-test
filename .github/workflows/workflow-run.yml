@@ -56,7 +56,8 @@ jobs:
 
       - name: Confirm a.txt download
         if: $ {{ steps.coordinator-report-download.outcome == 'success' }}
-        shell: |
+        shell: bash
+        run: |
           cat ${{ github.workspace }}/a.txt
 
   upload-codecov-smart-contracts:
@@ -76,5 +77,6 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Confirm b.txt download
         if: $ {{ steps.smc-report-download.outcome == 'success' }}
-        shell: |
+        shell: bash
+        run: |
           cat ${{ github.workspace }}/b.txt
